@@ -1,0 +1,22 @@
+PODS:
+  - dchs_motion_sensors (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+
+DEPENDENCIES:
+  - dchs_motion_sensors (from `.symlinks/plugins/dchs_motion_sensors/ios`)
+  - Flutter (from `Flutter`)
+
+EXTERNAL SOURCES:
+  dchs_motion_sensors:
+    :path: ".symlinks/plugins/dchs_motion_sensors/ios"
+  Flutter:
+    :path: Flutter
+
+SPEC CHECKSUMS:
+  dchs_motion_sensors: 1225b0995751d926daff45544e00a256f543065c
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+
+PODFILE CHECKSUM: 4f1c12611da7338d21589c0b2ecd6bd20b109694
+
+COCOAPODS: 1.16.2

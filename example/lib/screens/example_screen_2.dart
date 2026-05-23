@@ -1,0 +1,31 @@
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:panorama_viewer/panorama_viewer.dart';
+
+class ExampleScreen2 extends StatefulWidget {
+  const ExampleScreen2({super.key, required this.title});
+  final String title;
+  @override
+  ExampleScreen2State createState() => ExampleScreen2State();
+}
+
+class ExampleScreen2State extends State<ExampleScreen2> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.transparent,
+        title: Text(widget.title),
+      ),
+      body: PanoramaViewer(
+        sensorControl: (Platform.isIOS || Platform.isAndroid)
+            ? SensorControl.orientation
+            : SensorControl.none,
+        child: Image.asset('assets/panorama2.webp'),
+      ),
+    );
+  }
+}

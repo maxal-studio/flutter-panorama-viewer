@@ -1,0 +1,143 @@
+// ignore_for_file: avoid_print
+
+import 'dart:ui';
+
+import 'package:example/screens/example_screen_5.dart';
+import 'package:example/screens/example_screen_6.dart';
+import 'package:example/screens/example_screen_7.dart';
+import 'package:example/shaders/mix_config.dart';
+import 'package:flutter/material.dart';
+import 'package:panorama_viewer/shaders/shader_program_manager.dart';
+
+import 'screens/example_screen_1.dart';
+import 'screens/example_screen_2.dart';
+import 'screens/example_screen_3.dart';
+import 'screens/example_screen_4.dart';
+
+void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  ShaderProgramManager.instance.registerProvider<MixShaderConfig>(
+      () => FragmentProgram.fromAsset('shaders/mix.frag'));
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Panorama',
+      theme: ThemeData.dark(),
+      home: const MainScreen(),
+    );
+  }
+}
+
+class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Flutter Panorama Viewer'),
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: const Text('Example 1 - minimum code'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen1(
+                    title: 'Minimum code',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Example 2 - transparent appbar'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen2(
+                    title: 'Transparent appbar',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Example 3 - with hotspots and callbacks'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen3(
+                    title: 'Hotspots and callbacks',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Example 4 - Zoom and position with buttons'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen4(
+                    title: 'Zoom and position with buttons',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Example 5 - 2 panoramas side by side'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen5(
+                    title: '2 panoramas side by side',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Example 6 - Panorama Selection'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen6(
+                    title: 'Panorama Selection',
+                  ),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            title: const Text('Example 7 - Image Filters'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ExampleScreen7(),
+                ),
+              );
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
